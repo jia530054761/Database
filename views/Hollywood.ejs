@@ -70,6 +70,46 @@
 
 		<section class="wrapper">
 			<div class="content">
+				<div>
+				<h2>demo js array simulate database</h2>
+				
+				<script language="javascript">
+					var arrStr = "";
+					var arr = [0, 1, 2 ,3, 4, 5, 6, 7, 8, 9];
+					
+					//var arr1 = ["str", "st"];
+			
+					// arr.push();
+					
+					arr.splice(9);// delete
+					arr.push('test') // add
+					Array.prototype.update = function(index,val){
+						if(index > -1){
+							this.splice(index,1,val);
+						}
+					}
+					arr.update(0, "Hello"); // udpate
+					arr.splice(1,  2, "World");
+					//console.log(arr);
+					//document.write(arr);		
+					/*for (i = 0; i < arr.length; i++){
+						arrStr += '<div>' + arr[i] + '</div>';
+					};
+					console.log(arrStr);*/
+					for(i = 0; i < arr.length; i++){
+						arrStr += '<li>' + arr[i] + '</li>';
+					}
+					//arrStr = '<table>' + arrStr + '</table>';
+					
+				
+					document.write(arrStr);
+					document.write('<li>' + arr[1] + '</li>'); // display
+
+					
+				</script>
+			
+				</div>
+				<br/>
 			
 				<h2>AGE</h2>
 				<p>
@@ -117,7 +157,9 @@
 					})
 					</script>
 					</form>
-				</div>	
+				</div>
+				<br/>
+				
 					
 								
 			</div><!-- end content -->

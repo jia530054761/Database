@@ -25,6 +25,40 @@
 				<li><a href="/view_pie">View Pie</a></li>
 				<li><a href="/summary">Summary</a></li>
 			</ul>
+			<br>
+			<script language="javascript">
+				var flag = false
+				function setCookie(name, value){
+					var curCookie = name + "=" + escape(value) 
+								
+					if (!flag || (name + "=" + escape(value)).length <= 4000)
+						document.cookie = curCookie	
+				}	
+				
+				function getCookie(name){
+					var pref = name + '='
+					var cookieStIdx = document.cookie.indexOf(pref)
+					if (cookieStIdx == -1)
+						return null
+					var cookieEndIdx = document.cookie.indexOf(';', cookieStIdx + pref.length)
+					if(cookieEndIdx == -1)
+						cookieEndIdx = document.cookie.length
+						return unescape(document.cookie.substring(cookieStIdx + pref.length, cookieEndIdx))				
+				}
+				
+				var visits = getCookie("counter")
+				if (!visits)
+					visit = 1
+				else
+					visits = parseInt(visits) + 1
+					setCookie("counter", visits)
+					//document.write('<div class = "forS">Number of Visitors: </div>' + visits)
+					document.write('Number of Visitors: ' + visits)
+					
+			</script>
+			<!--<style>
+			.forS{font-family:"raleway-regular"}
+			</style> -->
 		</nav><!-- end navigation menu -->
 	</header><!-- end header -->
 
@@ -127,9 +161,12 @@
 				</div>
 			</a>
 		</div>
-
+		<!-- for counter-->
+	
+		
 		
 	</section><!-- end main -->
+	
 	
 </body>
 </html>

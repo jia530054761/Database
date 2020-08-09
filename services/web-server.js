@@ -325,6 +325,31 @@ function initialize(){
 	
     	});
 
+	app.get("/hello", async(req, res) => {
+		// raw style
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write("<html>");
+		res.write("<head><title>Hello World</title></head>");
+		res.write("<body><p>Hello world.</p></body>")
+		res.write("</html>");
+		res.end();
+	});
+
+	app.get("/help", async(req, res) => {
+		res.type("html");
+		res.set({
+			'ETag': '12345',
+			'meta': 'charset="utf-8"',
+		 });
+		res.send("<p>Hello world.</p>")
+		res.status(200).end();
+	});
+	
+	
+	app.get('/test', function (req, res) {
+	res.send('This page is for test');
+});
+
 	httpServer.listen(webServerConfig.port)
 	.on('listening', () => {
 		console.log('Web server listening on localhost');
