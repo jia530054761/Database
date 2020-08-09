@@ -1,4 +1,4 @@
 # Database
-database array updated in "Hollywood.ejs"
-counter updated in "'index.ejs'
-URI updated in "web-server.js"
+1. database array updated in "Hollywood.ejs"
+2. counter updated in "'index.ejs'
+3. URI updated in "web-server.js"
