@@ -350,12 +350,57 @@ function initialize(){
 	app.get('/test', async (req, res) => {
 	    //res.send('This page is for test')	
 		var count = 0;
+		
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.end((++count).toString())
+		res.end((++count).toString());
 		
-		
-	
 	});
+	
+	app.get('/array', async (req, res) => {
+	    //res.send('This page is for test')	
+		//var count = 0;
+		var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		//res.end((++count).toString());*/
+		res.write(arr.toString());
+		res.write(arr.push('test').toString());
+		res.end();
+		
+	});
+	
+	
+
+	//var arrStr = "";
+					//var arr = [0, 1, 2 ,3, 4, 5, 6, 7, 8, 9];
+					
+					//res.write(arr);
+
+					
+					//var arr1 = ["str", "st"];
+			
+					// arr.push();
+					
+					/*arr.splice(9);// delete
+					arr.push('test') // add
+					Array.prototype.update = function(index,val){
+						if(index > -1){
+							this.splice(index,1,val);
+						}
+					}
+					arr.update(0, "Hello"); // udpate
+					arr.splice(1,  2, "World");
+					//console.log(arr);
+					//document.write(arr);		
+					
+					for(i = 0; i < arr.length; i++){
+						arrStr += '<li>' + arr[i] + '</li>';
+					}
+					//arrStr = '<table>' + arrStr + '</table>';
+					
+				
+					res.write(arrStr);
+					res.write('<li>' + arr[1] + '</li>');*/
+
 
 	httpServer.listen(webServerConfig.port)
 	.on('listening', () => {
