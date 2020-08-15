@@ -46,12 +46,12 @@
 						return unescape(document.cookie.substring(cookieStIdx + pref.length, cookieEndIdx))				
 				}
 				
-				var visits = getCookie("counter")
+				var visits = getCookie("test")
 				if (!visits)
-					visit = 1
+					visits = 1
 				else
 					visits = parseInt(visits) + 1
-					setCookie("counter", visits)
+					setCookie("test", visits)
 					//document.write('<div class = "forS">Number of Visitors: </div>' + visits)
 					document.write('Number of Visitors: ' + visits)
 					
