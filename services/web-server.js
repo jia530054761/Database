@@ -350,6 +350,11 @@ function initialize(){
 	app.get('/test', async (req, res) => {
 	    //res.send('This page is for test')	
 		var count = 0;
+<<<<<<< HEAD
+=======
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.end((++count).toString());
+>>>>>>> 0847dfefac428ec594892c6d71a978fedc474604
 		
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.end((++count).toString());
