@@ -351,7 +351,7 @@ function initialize(){
 	    //res.send('This page is for test')	
 		var count = 0;
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.end((++count).toString())
+		res.end((++count).toString());
 		
 		
 	
