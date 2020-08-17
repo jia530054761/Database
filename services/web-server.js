@@ -7,6 +7,7 @@ var webServerConfig = require('../config/web-server.js');
 var database = require('./database.js');
 var oracledb = require("oracledb");
 var router = require('./router.js');
+var globalcount = 0;
 
 function initialize(){
 	app.use(express.static('views'));
@@ -349,10 +350,9 @@ function initialize(){
 	
 	app.get('/test', async (req, res) => {
 	    //res.send('This page is for test')	
-		var count = 0;
 		
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write("Number of Vistors: " + (++count).toString());
+		res.write("<div style='display: inline-flex;'><div style='font-weight:bold;'>Number of Vistors: </div><div style='margin: 0 0 0 20px; color: red;'>" + (++globalcount) + "</div></div>");
 		res.end();
 		
 	});
