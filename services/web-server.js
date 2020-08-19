@@ -426,6 +426,7 @@ function initialize(){
 			res.write("<td>" + element + "</td>")
 		})
 		res.write("</tr></table>")
+		res.end()
 	});
 
 	
