@@ -402,7 +402,7 @@ function initialize(){
 
 	app.get('/node', async (req, res) => {
 		var myArr = [0, 1, 2, 3];
-		var result;
+		let result = []; // variable result is declared as Array.
 		var depth = 3;
 	    function flattenWithDepth (array, result, depth) {
 			for (var i = 0; i < array.length; i++) {
@@ -414,12 +414,18 @@ function initialize(){
 				result.push(value)
 			  }
 			}
-		  
 			return result
-		  }
-		res.send(result);
-		
-		
+		}
+
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		// invoke function 'flattenWithDepth' 
+		flattenWithDepth(myArr, result, depth);
+		// Output array 'result' as HTML Table.
+		res.write("<table><tr>")
+		result.forEach(function(element){
+			res.write("<td>" + element + "</td>")
+		})
+		res.write("</tr></table>")
 	});
 
 	
