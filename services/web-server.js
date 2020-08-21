@@ -12,7 +12,38 @@ var globalcount = 0;
 function initialize(){
 	app.use(express.static('views'));
 	app.get("/", async (req, res) => {
-	res.render('index.ejs');
+		/*practice using res.write instead of res.render
+		res.write("");*/
+		res.write("<html>");
+		res.write("<head><title>Crime Analysis Website</title>");
+		res.write("<meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0'/>");
+		res.write("<link rel='stylesheet' type='text/css' href='css/reset.css'>");
+		res.write("<link rel='stylesheet' type='text/css' href='css/main.css'>");
+		res.write("<script type='text/javascript' src='js/jquery.js'></script>");
+		res.write("<script type='text/javascript' src='js/main.js'></script>");
+		res.write("</head>");
+		
+		res.write("<body><header><div class='logo'><a href='/'><h2>Crime Analysis</h2></a></div>");//end of logo
+		res.write("<div id='menu_icon'></div><nav><ul><li><a href='/' class='selected'>Home</a></li><li><a href='/search'>Search</a></li><li><a href='/view_trend'>View Trend</a></li><li><a href='/view_pie'>View Pie</a></li><li><a href='/summary'>Summary</a></li>");
+		res.write("<div style='display: inline-flex; font-size: 0.95em;'><div style='font-weight:bold;'>Number of Vistors: </div><div style='margin: 0 0 0 20px; color: red; font-size: 1em;'>" + (++globalcount) + "</div></div>");//add counter
+		res.write("</ul><br></nav></header>");
+		res.write("<section class='main clearfix'>");
+		res.write("<div class='work'><a href='/Hollywood'><img src='img/Hollywood.jpg' height = '300' width = '300' class='media' alt=''/><div class='caption'><div class='work_title'><h1>Hollywood</h1></div></div></a></div>");//1st pic
+		res.write('<div class="work"><a href="/Harbor"><img src="img/harbor.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Harbor</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/Southeast"><img src="img/southeast.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Southeast</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/Central"><img src="img/central.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Central</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/Southwest"><img src="img/Southwest.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Southwest</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/N_Hollywood"><img src="img/N hollywood.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>N Hollywood</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/Mission"><img src="img/Mission.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Mission</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/Topanga"><img src="img/Topanga.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>Topanga</h1></div></div></a></div>');
+		res.write('<div class="work"><a href="/77th_Street"><img src="img/77thstreet.jpg" height = "300" width = "300" class="media" alt=""/><div class="caption"><div class="work_title"><h1>77th Street</h1></div></div></a></div>');
+		
+		res.write("</section>");//end of main
+		res.write("/body");
+		res.write("/html");
+		res.end();
+	
+		//res.render('index.ejs');
     	});
 
 	app.get("/chart", async (req, res) => {
@@ -427,41 +458,6 @@ function initialize(){
 		})
 		res.write("</tr></table>")
 	});
-
-	
-	
-
-	//var arrStr = "";
-					//var arr = [0, 1, 2 ,3, 4, 5, 6, 7, 8, 9];
-					
-					//res.write(arr);
-
-					
-					//var arr1 = ["str", "st"];
-			
-					// arr.push();
-					
-					/*arr.splice(9);// delete
-					arr.push('test') // add
-					Array.prototype.update = function(index,val){
-						if(index > -1){
-							this.splice(index,1,val);
-						}
-					}
-					arr.update(0, "Hello"); // udpate
-					arr.splice(1,  2, "World");
-					//console.log(arr);
-					//document.write(arr);		
-					
-					for(i = 0; i < arr.length; i++){
-						arrStr += '<li>' + arr[i] + '</li>';
-					}
-					//arrStr = '<table>' + arrStr + '</table>';
-					
-				
-					res.write(arrStr);
-					res.write('<li>' + arr[1] + '</li>');*/
-
 
 	httpServer.listen(webServerConfig.port)
 	.on('listening', () => {
