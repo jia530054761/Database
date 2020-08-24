@@ -468,10 +468,10 @@ function initialize(){
 		}
 			
 		//4th Function
-		var result;
+		
 		function rollDice() {
-			result = Math.floor(6 * Math.random()) + 1;
-			return result;
+			diceresult = Math.floor(6 * Math.random()) + 1;
+			return diceresult;
 		}
 		
 		//5th Function 
@@ -510,22 +510,24 @@ function initialize(){
 		  {key: 2, value: 'two'},
 		  {key: 1, value: 'one'},
 		]
-		var resultIs = "";
+		//var resultIs = "";
 		var input1 = 55;
 		
 
 		function numberToString(number) {
 			
-		  if (number <= 0 || number > Number.MAX_SAFE_INTEGER) {
+		if (number <= 0 || number > Number.MAX_SAFE_INTEGER) {
 			return 'Number needs to be grater than 0 or less than 2^53-1.'
-		  }
+		}
+		
+		let result5 = ''; 
 
-		  for (const n of stringLookup) {
+		for (const n of stringLookup) {
 			if (number >= n.key) {
 			  if (number < 100) {
-				resultIs += n.value
+				result5 += n.value
 				number -= n.key
-				number > 0 ? resultIs += ' ' : resultIs
+				number > 0 ? result5 += ' ' : result5
 			  } else {
 				const t = Math.floor(number / n.key)
 				const d = number % n.key
@@ -533,12 +535,12 @@ function initialize(){
 			  }
 			}
 		  }
-		  return resultIs
+		  return result5
 
 		}
 		
 		//6th Function
-		var sum;
+		
 		var myNum6 = 5;
 		function fibonacciSum(num) {//0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
 			if (num <= 0) {
@@ -582,19 +584,16 @@ function initialize(){
 		//snake_case to camelCase
 		const regex = /([\-_]\w)/g;
 		var myStr8 = "snake_case";
-		var result8 = "";
-		var temp = "";
+		
 		function snakeToCamel(s) {
-			result8 = s.replace(regex, function snakeToCamelReplacer(m) {
-				temp = m[1].toUpperCase();
-				return temp;
+			return s.replace(regex, function snakeToCamelReplacer(m) {
+				return m[1].toUpperCase()
 			})
-			return result8;
 		}
 		
 		//9th Function
 		var myArr9 = [1, 2, 3, 5, 8]
-		var medianValue = 0
+		
 		function median(array) {
 			if (!Array.isArray(array)) {
 				return `${array} is not an array.`
@@ -606,7 +605,7 @@ function initialize(){
 				return `${array} has no items.`
 			}
 
-			
+			let medianValue = 0
 			const sortedArray = array.sort((curr, next) => (curr - next))
 			const index = Math.floor(sortedArray.length / 2)
 
@@ -619,24 +618,20 @@ function initialize(){
 			  return medianValue
 		}
 		//10th Funciton
-		var result10
+		
 		function getOrdinalSuffix(i) {
 			const j = i % 10
 			const k = i % 100
 			if (j === 1 && k !== 11) {
-				result10 = `${i}st`
-				return result
+				 return `${i}st`
 			}
 			if (j === 2 && k !== 12) {
-				result10 = `${i}nd`
-				return result
+				return `${i}nd`
 			}
 			if (j === 3 && k !== 13) {
-				result10 = `${i}rd`
-				return result10
+				return `${i}rd`
 			}
-				result10 = `${i}th`
-				return result10
+				return `${i}th`	
 		}
 		
 		//11st Function
@@ -657,8 +652,8 @@ function initialize(){
 			if (str == '') {
 				return str
 			} else {
-				result12 = reverse(str.substr(1)) + str.charAt(0)
-				return result12
+				return reverse(str.substr(1)) + str.charAt(0)
+				
 			}
 		}
 		
@@ -710,15 +705,18 @@ function initialize(){
 		res.write("<div style = 'margin: 20px 0 0 0; font: small-caps 24px/1 sans-serif;font-weight: bold; font-size: 20pt;'>4. This function can generate random dice numbers.</br></div>");
 		res.write("</br>");
 		rollDice();	
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font: small-caps 24px/1 sans-serif;'> random number:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 5px outset #1C6EA4;'>" + '&nbsp&nbsp' + result + '&nbsp&nbsp' + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font: small-caps 24px/1 sans-serif;'> random number:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 5px outset #1C6EA4;'>" + '&nbsp&nbsp' + diceresult.toString() + '&nbsp&nbsp' + "</div></div>");
 
 		//5th output 
 		res.write("<div style = 'margin: 20px 0 0 0; font-style: oblique;font-weight: bold; font-size: 20pt;'>5. This function turns numbers into strings.</br></div>");
 		res.write("</br>");
 		numberToString(input1);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: oblique;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; text-decoration:underline; color: transparent; background: #666666; -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; text-shadow: 0px 3px 3px rgba(255,255,255,0.5);'>" + input1 + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: oblique;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; text-decoration:underline; color: transparent; background: #666666; -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; text-shadow: 0px 3px 3px rgba(255,255,255,0.5);'>" + numberToString(input1) + "</div></div>");
+		numberToString(2);
 		res.write("</br>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: oblique;'> Output String:&nbsp</div><div style = 'font-family: Times New Roman; text-decoration:underline; color: transparent; background: #666666; -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; text-shadow: 0px 3px 3px rgba(255,255,255,0.5);'>" + resultIs + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: oblique;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; text-decoration:underline; color: transparent; background: #666666; -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; text-shadow: 0px 3px 3px rgba(255,255,255,0.5);'>" + 2+ "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: oblique;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; text-decoration:underline; color: transparent; background: #666666; -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; text-shadow: 0px 3px 3px rgba(255,255,255,0.5);'>" + numberToString(2) + "</div></div>");
 		
 		//6th output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; font-size: 20pt;'>6. This function sums fibonacci sequence.</br></div>");
@@ -726,7 +724,7 @@ function initialize(){
 		fibonacciSum(myNum6);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Comic Sans MS, Comic Sans, cursive;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 2px dotted #1C6EA4;'>" + '&nbsp&nbsp' + myNum6 + '&nbsp&nbsp' + "</div></div>");
 		res.write("</br>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Comic Sans MS, Comic Sans, cursive;'> Output:&nbsp</div><div style = 'font-family: Times New Roman; color: blue; border: 2px dotted #1C6EA4;'>" + '&nbsp&nbsp' + sum.toString() + '&nbsp&nbsp' + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Comic Sans MS, Comic Sans, cursive;'> Output:&nbsp</div><div style = 'font-family: Times New Roman; color: blue; border: 2px dotted #1C6EA4;'>" + '&nbsp&nbsp' + fibonacciSum(myNum6).toString() + '&nbsp&nbsp' + "</div></div>");
 		
 		//7th output
 		res.write("<div style = 'margin: 20px 0 0 0; font-style: Arial;font-weight: bold; font-size: 20pt;'>7. This function checks if number is armstrong number.</br></div>");	
@@ -744,25 +742,25 @@ function initialize(){
 		res.write("</br>");
 		snakeToCamel(myStr8);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Perpetua;'> Input snake-case string:&nbsp</div><div style = 'font-family: Times New Roman; color: black; text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;'>" + myStr8 + "</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Perpetua;'> &nbsp&nbsp Output camel-case string:&nbsp</div><div style = 'font-family: Times New Roman; color: black; text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;'>" + result8 + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Perpetua;'> &nbsp&nbsp Output camel-case string:&nbsp</div><div style = 'font-family: Times New Roman; color: black; text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;'>" + snakeToCamel(myStr8) + "</div></div>");
 
 		//9th output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Garamond; font-weight: bold; font-size: 20pt;'>9. This function is to find median of array.</br></div>");
 		res.write("</br>");
 		median(myArr9);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Garamond;'> Input array:&nbsp</div><div style = 'font-family: Times New Roman; color: #333333; text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);  '>" + '[' + myArr9 + ']' +"</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Garamond;'> &nbsp&nbsp Median:&nbsp</div><div style = 'font-family: Times New Roman; color: #333333; text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);'>" + medianValue.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Garamond;'> &nbsp&nbsp Median:&nbsp</div><div style = 'font-family: Times New Roman; color: #333333; text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);'>" + median(myArr9).toString() + "</div></div>");
 
 		//10th output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Candara; font-weight: bold; font-size: 20pt;'>10. This function is to add suffix to number.</br></div>");
 		res.write("</br>");
 		getOrdinalSuffix(123);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman;color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'> 123 </div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'>" + result10.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'>" + getOrdinalSuffix(123).toString() + "</div></div>");
 		res.write("</br>");
 		getOrdinalSuffix(541);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'> 541 </div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'>" + result10.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #000000; text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;'>" + getOrdinalSuffix(541).toString() + "</div></div>");
 
 		//11st output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Perpetua; font-weight: bold; font-size: 20pt;'>11. This function reverses array in place.</br></div>");
@@ -777,7 +775,7 @@ function initialize(){
 		res.write("</br>");
 		reverse(myStr12);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Times New Roman;'> Input string:&nbsp</div><div style = 'font-family: Times New Roman; color: brown; text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;'>" + myStr12 +"</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Times New Roman;'> &nbsp&nbsp Output string:&nbsp</div><div style = 'font-family: Times New Roman; color: brown; text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;'>" + result12 + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Times New Roman;'> &nbsp&nbsp Output string:&nbsp</div><div style = 'font-family: Times New Roman; color: brown; text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;'>" + reverse(myStr12) + "</div></div>");
 		
 		res.write("</div>")
 		res.write("</div>")
