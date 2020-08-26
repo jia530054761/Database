@@ -442,7 +442,8 @@ function initialize(){
 		var myStr = "aabbad"
 		var myStr1 = "cdc"
 		function checkPalindrome(str) {
-			result = true;
+			//result = true;>>>>>this way means result is not local var
+			var result = true;//right way 
 			const newstr = str.replace(/[\W_]/g, '').toLowerCase()
 
 			if (newstr == newstr.split('').reverse().join('')) {
@@ -457,7 +458,7 @@ function initialize(){
 		var e = 4;
 		var e1 = 3;
 		function contains(array, element) {
-			result = false;
+			var result = false;
 			for (var i = 0; i < array.length; i++) {
 				if (array[i] == element) {
 					result = true;
@@ -470,8 +471,8 @@ function initialize(){
 		//4th Function
 		
 		function rollDice() {
-			diceresult = Math.floor(6 * Math.random()) + 1;
-			return diceresult;
+			return Math.floor(6 * Math.random()) + 1;
+	
 		}
 		
 		//5th Function 
@@ -564,7 +565,7 @@ function initialize(){
 			let eachDigit = 0
 			let check = 0
 			let digit = 0
-			result7 = true
+			var result7 = true
 			for (let i = num; i > 0; i = Math.floor(i / 10)) {
 					digit = digit + 1
 				  }
@@ -583,8 +584,7 @@ function initialize(){
 		//8th Function
 		//snake_case to camelCase
 		const regex = /([\-_]\w)/g;
-		var myStr8 = "snake_case";
-		
+	
 		function snakeToCamel(s) {
 			return s.replace(regex, function snakeToCamelReplacer(m) {
 				return m[1].toUpperCase()
@@ -647,7 +647,7 @@ function initialize(){
 		}
 		
 		//12nd Function
-		var myStr12 = "HelloWorld"
+		
 		function reverse(str) {
 			if (str == '') {
 				return str
@@ -681,12 +681,12 @@ function initialize(){
 		res.write("</br>");
 		res.write("<div style= 'text-align:justify;'>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> Input string:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff8080; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + myStr + '&nbsp&nbsp' +"</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + result.toString() + '&nbsp&nbsp' + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + checkPalindrome(myStr).toString() + '&nbsp&nbsp' + "</div></div>");
 		res.write("</br>");
 		checkPalindrome(myStr1);
 		res.write("</br>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> Input string:&nbsp</div><div style = 'font-family: Times New Roman; color: #5cb8ff; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + myStr1 + '&nbsp&nbsp' + "</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #2e73ff; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + result.toString() +  '&nbsp&nbsp' + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Georgia, serif;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #2e73ff; border: 4px double #1C6EA4;'>" + '&nbsp&nbsp' + checkPalindrome(myStr1).toString() +  '&nbsp&nbsp' + "</div></div>");
 		res.write("</div>");
 	
 		//3rd output
@@ -695,17 +695,17 @@ function initialize(){
 		contains(myArr, e);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> Input array:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF; text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + '[' + myArr + ']' + "</div></div>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> ,&nbsp and element is :&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF; text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + e +"</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF;  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + result.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF;  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + contains(myArr, e).toString() + "</div></div>");
 		res.write("</br>");
 		contains(myArr, e1);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> if element is:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF; text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + e1 + "</div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF;  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + result.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Candara;'> &nbsp&nbsp Output:&nbsp</div><div style = 'font-family: Times New Roman; color: #FFFFFF;  text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;'>" + contains(myArr, e1).toString() + "</div></div>");
 
 		//4th output
 		res.write("<div style = 'margin: 20px 0 0 0; font: small-caps 24px/1 sans-serif;font-weight: bold; font-size: 20pt;'>4. This function can generate random dice numbers.</br></div>");
 		res.write("</br>");
 		rollDice();	
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font: small-caps 24px/1 sans-serif;'> random number:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 5px outset #1C6EA4;'>" + '&nbsp&nbsp' + diceresult.toString() + '&nbsp&nbsp' + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font: small-caps 24px/1 sans-serif;'> random number:&nbsp</div><div style = 'font-family: Times New Roman; color: red; border: 5px outset #1C6EA4;'>" + '&nbsp&nbsp' + rollDice().toString() + '&nbsp&nbsp' + "</div></div>");
 
 		//5th output 
 		res.write("<div style = 'margin: 20px 0 0 0; font-style: oblique;font-weight: bold; font-size: 20pt;'>5. This function turns numbers into strings.</br></div>");
@@ -731,15 +731,16 @@ function initialize(){
 		res.write("</br>");
 		armstrong(154);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'> 154 </div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'>" + result7.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'>" + armstrong(154).toString() + "</div></div>");
 		armstrong(407);
 		res.write("</br>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> Input num:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'> 407 </div></div>");
-		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'>" + result7.toString() + "</div></div>");
+		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Arial;'> &nbsp&nbsp Output String:&nbsp</div><div style = 'font-family: Times New Roman; color: #ff6659; text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;'>" + armstrong(407).toString() + "</div></div>");
 
 		//8th output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Perpetua; font-weight: bold; font-size: 20pt;'>8. This function turns snake case to camel case.</br></div>");
 		res.write("</br>");
+		var myStr8 = "snake_case";//declare here, closer to function
 		snakeToCamel(myStr8);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Perpetua;'> Input snake-case string:&nbsp</div><div style = 'font-family: Times New Roman; color: black; text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;'>" + myStr8 + "</div></div>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Perpetua;'> &nbsp&nbsp Output camel-case string:&nbsp</div><div style = 'font-family: Times New Roman; color: black; text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;'>" + snakeToCamel(myStr8) + "</div></div>");
@@ -773,6 +774,7 @@ function initialize(){
 		//12nd output
 		res.write("<div style = 'margin: 20px 0 0 0; font-family: Times New Roman; font-style: italic; font-weight: bold; font-size: 20pt;'>12. This function reverses string.</br></div>");	
 		res.write("</br>");
+		var myStr12 = "HelloWorld"
 		reverse(myStr12);
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Times New Roman;'> Input string:&nbsp</div><div style = 'font-family: Times New Roman; color: brown; text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;'>" + myStr12 +"</div></div>");
 		res.write("<div style='display: inline-flex; font-size: 14pt';><div style = 'font-family: Times New Roman;'> &nbsp&nbsp Output string:&nbsp</div><div style = 'font-family: Times New Roman; color: brown; text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;'>" + reverse(myStr12) + "</div></div>");
