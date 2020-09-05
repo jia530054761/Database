@@ -219,7 +219,7 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 7em 0;
   clear: both;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   #fh5co-course-categories,
   #fh5co-counter,
   #fh5co-course,
