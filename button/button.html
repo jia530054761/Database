@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>CounterforButton</title>
+
+<script type="text/javascript">
+	var sum = 0;
+	function count()
+	{
+		sum++;
+		document.getElementById("count").innerHTML = sum;
+	}
+</script>
+</head>
+
+<body>
+<button onclick="count()" type="button" value="count" style = "background-color: #ffcccc; border: none; padding: 13px 25px; border-radius: 8px;">Click Me</button>
+<p>count: <span id="count" style= "color: red;">0</span>
+</p>
+</body>
+<html>
