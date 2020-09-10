@@ -459,6 +459,14 @@ function initialize(){
 		res.write("</tr></table>")
 		res.end()
 	});
+	
+	require('../exercise/urihandler')(app);
+	require('../exercise/handlerforarray')(app);
+	require('../exercise/handlerforfunc')(app);
+	require('../exercise/handlerforhello')(app);
+	require('../exercise/handlerforhelp')(app);
+	require('../exercise/handlerfornode')(app);
+	require('../exercise/handlerfortest')(app);
 
 	httpServer.listen(webServerConfig.port)
 	.on('listening', () => {
