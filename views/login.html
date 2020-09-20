@@ -40,17 +40,19 @@
 <div id = "blank">
 </div>
 
+<form name="user" action="#" method="get">
+
 <div id = "section">
 <br/>
 <h2> Login </h2>
 <p>username:<br/>
-<input type = "text" name = "username">
+<input type = "text" name = "username" id = "username">
 <br/>
 password:<br/>
-<input type = "password" name = "password">
+<input type = "password" name = "pwd" id = "pwd" >
 <br/>
 <br/>
-<input type = "button" value = "Submit" onclick = "location.href = '/'"/>
+<input type="submit" id="id" value="Submit" onclick="return sub()"/>
 </section>
 </p>
 </div>
@@ -65,7 +67,18 @@ password:<br/>
 
 <div id = "blank2">
 <br/>
+
 <input type = "button" value = "Back" onclick = "location.href = '/'"/>
 </div>
 </body>
+
+<script>
+function sub(){
+    var username = document.getElementById("username").value
+    var pwd = document.getElementById("pwd").value
+    alert("username: " + username + " " + "password: " + pwd);
+}
+</script>
+ 
+</form>
 </html>
