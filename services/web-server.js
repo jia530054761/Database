@@ -11,6 +11,7 @@ var globalcount = 0;
 
 function initialize(){
 	app.use(express.static('views'));
+	app.use(express.static('button'));
 	app.get("/", async (req, res) => {
 		/*practice using res.write instead of res.render
 		res.write("");*/
