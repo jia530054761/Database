@@ -1,21 +1,21 @@
 <html>
 <head>
 <title>RequestnResponse</title>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	$("button").click(function(){
-		$.get("test.php",function(data){
-			alert("response: " + data);
-		});
-	});
-});
+var clickbutton = function() {
+	var http = new XMLHttpRequest();
+	http.onreadystatechange = function(res) {
+		if(this.readyState != 4)
+			return;
+		alert("it is ready");
+		alert(this.response);
+	}
+	http.open("GET", "/hello");
+	http.send();
+}
 </script>
 </head>
-
 <body>
-<button>Request</button>
+<button onclick="clickbutton()">Request</button>
 </body>
 </html>
-
-
