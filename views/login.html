@@ -2,45 +2,12 @@
 
 <head>
 <title>USER</title>
-<style>
-#header {
-    text-align:center;
-    padding:5px;
-	font-size:20px;
-}
-#blank
-{
-	width:300px;
-	height:450px;
-	float:left;
-}
-#section{
-	width:500px;
-	height:450px;
-	float:left;
-}
-#nav{
-	width:350px;
-	height:450px;
-	float:left;
-}
-#blank2
-{
-	width:97px;
-	height:450px;
-	float:left;
-}
-</style>
+
 </head>
 <body>
-<div id = "header">
-<h1 align = "center"> USER </h1>
-</div>
-<br/>
-<div id = "blank">
-</div>
 
-<form name="user" action="#" method="get">
+
+<form name="user" action="http://127.0.0.1:3000/login" method="get">
 
 <div id = "section">
 <br/>
@@ -49,35 +16,38 @@
 <input type = "text" name = "username" id = "username">
 <br/>
 password:<br/>
-<input type = "password" name = "pwd" id = "pwd" >
+<input type = "password" name = "password" id = "password" >
 <br/>
 <br/>
-<input type="submit" id="id" value="Submit" onclick="return sub()"/>
+<input type="submit" id="id" value="Submit"/>
 </section>
 </p>
 </div>
 
-<div id = "nav">
-<br/>
-<h2> Register </h2>
-<p>no account yet?</p>
-<br/>
-<input type = "button" value = "Register" onclick = "location.href = '/'">
-</div>
-
-<div id = "blank2">
-<br/>
-
-<input type = "button" value = "Back" onclick = "location.href = '/'"/>
-</div>
 </body>
 
 <script>
+
 function sub(){
     var username = document.getElementById("username").value
-    var pwd = document.getElementById("pwd").value
-    alert("username: " + username + " " + "password: " + pwd);
+    var password = document.getElementById("password").value
+	var http = new XMLHttpRequest();
+	if (username = "abcd"){
+		if (password = "123"){
+			alert("success");
+			http.send();
+		}
+		else{
+			alert("invalid password");
+		}
+	else {
+		alert ("invalid username");
+	}
+	http.send();
+    //alert("username: " + username + " " + "password: " + password);
 }
+
+
 </script>
  
 </form>

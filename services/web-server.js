@@ -359,7 +359,11 @@ function initialize(){
 	
     	});
 		
-	
+	app.get('/login', (req, res) => {
+	console.log(req.query);
+	res.send('success');
+	})
+		
 
 	require('../exercise/urihandler')(app);
 	require('../exercise/handlerforhello')(app);
