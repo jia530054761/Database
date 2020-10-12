@@ -7,9 +7,12 @@ var webServerConfig = require('../config/web-server.js');
 var database = require('./database.js');
 var oracledb = require("oracledb");
 var router = require('./router.js');
+var bodyparser = require('body-parser');
 var globalcount = 0;
 
 function initialize(){
+	app.use(bodyparser.json());
+	app.use(bodyparser.urlencoded({ extended: true }));
 	app.use(express.static('views'));
 	app.use(express.static('button'));
 	app.get("/", async (req, res) => {
@@ -125,7 +128,7 @@ function initialize(){
     	});
 
 	app.get("/77th_Street", async (req, res) => {
-	res.render('77th_Street.ejs');
+	
     	});
 	
 
@@ -359,10 +362,25 @@ function initialize(){
 	
     	});
 		
-	app.get('/login', (req, res) => {
-	console.log(req.query);
-	res.send('success');
-	})
+	app.get("/login", async (req, res) => {
+		res.render('login.ejs');
+    });
+		
+	
+	app.post("/login",function(req,res){
+	
+　　	var user={
+　　　　	username:'admin',
+　　　　	password:'admin'
+　　	}
+　　	if(req.body.username == user.username && req.body.password == user.password)
+　	{
+　　　　	res.send(200);
+　　	}else{
+　　　　	res.send(404);
+　　	}
+	
+	});
 		
 
 	require('../exercise/urihandler')(app);
